@@ -14,3 +14,7 @@ Trip
 Billing
 seats
 states 
+
+
+#TODO: implement soft delete
+#TODO: change updated_at time on every update

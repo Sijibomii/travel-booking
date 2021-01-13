@@ -151,7 +151,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
     await User.query().findById(req.user.id).patch(user);
     const updatedUser = await User.query().findById(req.user.id).select('id', 'email', 'name','phone_no','is_admin')
-    console.log(updatedUser)
+    //console.log(updatedUser)
     const payload = {
       id: updatedUser.id,
       name: updatedUser.name,
@@ -210,7 +210,30 @@ const getUserById = asyncHandler(async (req, res) => {
 // @desc    Update user
 // @route   PUT /api/users/:id
 // @access  Private/Admin
+const updateUser = asyncHandler(async (req, res) => {
+  const user = await User.query().findById(req.params.id)
 
+  if (user) {
+    user.name = req.body.name || user.name
+    user.email = req.body.email || user.email
+    user.is_admin = req.body.is_admin
+
+    await User.query().findById(req.user.id).patch(user);
+    const updatedUser = await User.query().findById(req.user.id).select('id', 'email', 'name','phone_no','is_admin')
+    //const updatedUser = await user.save()
+
+    res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      phone_no: updatedUser.phone_no,
+      isAdmin: updatedUser.is_admin,
+    })
+  } else {
+    res.status(404)
+    throw new Error('User not found')
+  }
+})
 module.exports={
   authUser,
   registerUser,
@@ -218,5 +241,6 @@ module.exports={
   updateUserProfile,
   getUsers,
   deleteUser,
-  getUserById
+  getUserById,
+  updateUser
 }

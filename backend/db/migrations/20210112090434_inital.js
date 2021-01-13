@@ -39,6 +39,7 @@ exports.up = async(knex)=> {
   await knex.schema.createTable(tableNames.seat, (table) => {
     table.increments().notNullable();
     references(table, 'buses', true);
+    table.enu('status',['booked', 'pending', 'vacant']).defaultTo('vacant');
     addDefaultColumns(table);
   });
   //parks table
