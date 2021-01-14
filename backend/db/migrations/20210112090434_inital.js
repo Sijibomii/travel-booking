@@ -40,6 +40,8 @@ exports.up = async(knex)=> {
     table.increments().notNullable();
     references(table, 'buses', true);
     table.enu('status',['booked', 'pending', 'vacant']).defaultTo('vacant');
+    references(table,'user',false);
+    references(table,'user',false, 'pending');
     addDefaultColumns(table);
   });
   //parks table
@@ -54,6 +56,7 @@ exports.up = async(knex)=> {
     table.increments().notNullable();
     references(table, 'park',true,'departure_point');
     references(table, 'park',true,'arrival_point');
+    table.string('description').notNullable();
     table.double('price').notNullable();
     references(table, 'buses', true);
     table.datetime('departure_time').notNullable();

@@ -15,6 +15,6 @@ Billing
 seats
 states 
 
-
+#TODO: when trip ticket is paid for change seat status to booked 
 #TODO: implement soft delete
 #TODO: change updated_at time on every update

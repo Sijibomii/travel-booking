@@ -94,6 +94,7 @@ const registerUser = asyncHandler(async (req, res) => {
       email,
       phone_no,
       password: hashedPassword,
+      is_admin:false
     });
     delete insertedUser.password;
     const payload = {
