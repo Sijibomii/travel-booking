@@ -68,7 +68,7 @@ const updateState = asyncHandler(async(req, res) =>{
       res.status(403);
       throw error;
   }
-  await State.query().findById(req.params.id).patch(user);
+  await State.query().findById(req.params.id).patch(state);
     const updatedState = await State.query().findById(req.params.id).select('*')
     
     res.json(updatedState)

@@ -4,11 +4,12 @@ const users = require('./routes/usersRoutes');
 const buses = require('./routes/busesRoutes');
 const seats = require('./routes/seatsRoutes');
 const parks = require('./routes/parkRoutes');
+const trips = require('./routes/tripRoutes');
 const router = express.Router();
 router.use('/users', users);
-router.use('/buses', buses)
+router.use('/buses', buses);
 router.use('/states', states);
-router.use('/seats', seats)
-router.use('/parks',parks)
-
+router.use('/seats', seats);
+router.use('/parks',parks);
+router.use('/trips',trips);
 module.exports = router;

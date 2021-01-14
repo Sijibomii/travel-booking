@@ -1,11 +1,17 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "type": "object",
-  "title": "State",
-  "description": "The States",
+  "title": "Trip",
+  "description": "The Trips",
   "required": [
-      "name",
-      "code"
+     "departure_point_id",
+     "arrival_point_id",
+     "description",
+     "price",
+     "buses_id",
+     "departure_time",
+     "arrival_time",
+     "duration_hours"
   ],
   "additionalProperties": true
   
